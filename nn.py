@@ -2,6 +2,7 @@ import numpy as np
 import random
 import random
 
+
 class NeuralNetwork:
     def __init__(self, numI, numH, numO):
         self.inputNodes = numI
@@ -17,7 +18,7 @@ class NeuralNetwork:
 
         return 1 / (1 + np.exp(-mat))
 
-    def feedforward(self, inputs):
+    def predict(self, inputs):
         inputs = np.array(inputs)
         sh_inputs = inputs.shape
         inputs = inputs.reshape(sh_inputs[0], 1)
@@ -32,7 +33,6 @@ class NeuralNetwork:
         outputs = self.weights_ho.dot(hidden)
         outputs = np.add(outputs, self.bias_o)
         outputs = self.sigmoid(outputs)
-
 
         return outputs
 
@@ -89,7 +89,6 @@ class NeuralNetwork:
 
         self.weights_ih = np.add(self.weights_ih, weight_ih_deltas)
         self.bias_h = np.add(self.bias_h, hidden_gradients)
-
 
         # print("output: ", outputs)
         # print("targets: ", targets)
